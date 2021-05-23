@@ -23,9 +23,9 @@ client.readTodos({}, (err, response) => {
 })
 
 // Receiving streamed data
-const call = client.readTodosStream()
-call.on('data', item => {
-  console.log('stream')
-  console.log('received', item)
-})
-call.on('end', e => console.log('server done'))
+// const call = client.readTodosStream()
+// call.on('data', item => {
+//   console.log('stream')
+//   console.log('received', item)
+// })
+// call.on('end', e => console.log('server done'))

@@ -1,5 +1,6 @@
 import logging
 from concurrent import futures
+import time
 
 import grpc
 
@@ -22,6 +23,16 @@ class TodoServicer(todo_pb2_grpc.TodoServicer):
         for todo in self.db:
             todos.items.append(TodoItem(**todo))
         return todos
+
+    def readTodosStream(self, request, context):
+        for todo in self.db:
+            time.sleep(0.75)
+            yield TodoItem(**todo)
+
+    def createTodo(self, request, context):
+        new_todo = {'id': len(self.db) + 1, 'text': request.text}
+        self.db.append(new_todo)
+        return TodoItem(**new_todo)
 
 
 def serve():
