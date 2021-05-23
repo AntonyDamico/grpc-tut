@@ -10,7 +10,7 @@ server.bind('0.0.0.0:40000', grpc.ServerCredentials.createInsecure());
 
 server.addService(
   todoPackage.Todo.service,
-  { createTodo, readTodos }
+  { createTodo, readTodos, readTodosStream }
 );
 
 server.start();
@@ -25,4 +25,15 @@ function createTodo({ request }, callback) {
 
 function readTodos(_, callback) {
   callback(null, { items: todos });
+}
+
+// streaming data
+let sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+async function readTodosStream(call, callback) {
+  for (const todo of todos) {
+    call.write(todo)
+    await sleep(750)
+  }
+  call.end();
 }
