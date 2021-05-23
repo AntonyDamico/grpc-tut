@@ -23,6 +23,6 @@ function createTodo({ request }, callback) {
   callback(null, todoItem)
 }
 
-function readTodos(call, callback) {
-
+function readTodos(_, callback) {
+  callback(null, { items: todos });
 }

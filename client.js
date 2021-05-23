@@ -11,6 +11,13 @@ const client = new todoPackage.Todo(
   grpc.credentials.createInsecure(),
 );
 
+
 client.createTodo({ text }, (err, response) => {
-  console.log(err, response)
+  console.log('creating')
+  console.log(err, response);
 });
+
+client.readTodos({}, (err, response) => {
+  console.log('reading')
+  console.log(err, response)
+})
