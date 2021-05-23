@@ -15,7 +15,7 @@ message TodoText {
 
 message TodoItem {
   int32 id = 1;
-  TodoText text = 2;
+  string text = 2;
 }
 
 message TodoItems {
