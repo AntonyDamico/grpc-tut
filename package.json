@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/AntonyDamico/grpc-tut/issues"
   },
-  "homepage": "https://github.com/AntonyDamico/grpc-tut#readme"
+  "homepage": "https://github.com/AntonyDamico/grpc-tut#readme",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.6.2",
+    "grpc": "^1.24.10"
+  }
 }
